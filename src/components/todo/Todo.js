@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Adding from "../addingArea/Adding";
 import styles from "./Todo.module.css";
 
@@ -6,7 +6,10 @@ const Todo = () => {
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
 
-  console.log(value);
+  useEffect(() => {
+    JSON.stringify(localStorage.setItem("newData", data));
+  }, [data]);
+
   return (
     <div>
       <div className={styles.todo}>
